@@ -10,23 +10,7 @@ public class App {
         int option = getActionFromUser(input);
 
         if (option == 1) {
-            System.out.println("Tworzymy nowego gościa");
-            try {
-                System.out.print("Podaj imię: ");
-                String firstName = input.next();
-                System.out.print("Podaj nazwisko: ");
-                String lastName = input.next();
-                System.out.print("Podaj wiek: ");
-                int age = input.nextInt();
-                Guest newGuest = new Guest(firstName,lastName,age);
-                String info = String.format("Dodano nowego gościa: %s %s (%d)",
-                        newGuest.firstName, newGuest.lastName, newGuest.age);
-                System.out.println(info);
-            } catch (Exception e){
-                System.out.println("Zły wiek, używaj liczb");
-                e.printStackTrace();
-            }
-
+            Guest newGuest = createNewGuest(input);
         } else if (option == 2) {
             try {
                 System.out.print("Numer: ");
@@ -78,5 +62,26 @@ public class App {
         }
 
         return actionNumber;
+    }
+    static Guest createNewGuest (Scanner input){
+        try {
+            System.out.println("Tworzymy nowego gościa");
+            System.out.print("Podaj imię: ");
+            String firstName = input.next();
+            System.out.print("Podaj nazwisko: ");
+            String lastName = input.next();
+            System.out.print("Podaj wiek: ");
+            int age = input.nextInt();
+            Guest newGuest = new Guest(firstName,lastName,age);
+            String info = String.format("Dodano nowego gościa: %s %s (%d)",
+                    newGuest.firstName, newGuest.lastName, newGuest.age);
+            System.out.println(info);
+            return newGuest;
+        } catch (Exception e){
+            System.out.println("Zły wiek, używaj liczb");
+            e.printStackTrace();
+            return null;
+        }
+
     }
 }
