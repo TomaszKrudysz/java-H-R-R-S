@@ -79,9 +79,7 @@ public class App {
             System.out.println("Ilość łóżek: ");
             int beds = input.nextInt();
             Room newRoom = new Room(number,beds);
-            String info = String.format("Dodano nowy pokój - numer: %d (%d)",
-                    newRoom.number,newRoom.beds);
-            System.out.println(info);
+            System.out.println(newRoom.getInfo());
             return newRoom;
         }catch (Exception e){
             System.out.println("Podaj liczby");
